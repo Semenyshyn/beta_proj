@@ -22,3 +22,5 @@ def message_list(request):
     return render(request, 'messages_list.html', {
         'elements': elements
     })
+
+# TEST GIT 1
