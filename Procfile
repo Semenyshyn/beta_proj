@@ -1,0 +1,1 @@
+web: gunicorn beta_proj.wsgi --log-file -
