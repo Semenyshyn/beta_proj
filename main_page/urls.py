@@ -5,6 +5,5 @@ app_name = 'main_page'
 urlpatterns = [
     url(r'^$', views.stream_data, name='stream_data'),
     url(r'^list/$', views.message_list, name='message_list'),
-    url(r'^post/$', views.post_request, name='post_request'),
-    url(r'^send_post/$', views.send_post, name='send_post'),
+    url(r'^post/$', views.post_request, name='post_request')
 ]

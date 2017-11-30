@@ -2,11 +2,7 @@ from django import forms
 
 
 class DataForm(forms.Form):
-    PPM = forms.CharField(label='PPM', max_length=100),
-    OT = forms.CharField(label='OT', max_length=100),
-    IT = forms.CharField(label='IT', max_length=100),
-    IH = forms.CharField(label='IH', max_length=100),
-    OH = forms.CharField(label='OH', max_length=100),
-    AP = forms.CharField(label='AP', max_length=100),
-    Time = forms.CharField(label='Time', max_length=100),
-    Date = forms.CharField(label='DATE', max_length=100)
+    url = forms.CharField(label='URL', max_length=100)
+    port = forms.CharField(label='PORT', max_length=40)
+    body = forms.CharField(label='Request Body', max_length=1000)
+    # date = forms.DateField(label='Date')

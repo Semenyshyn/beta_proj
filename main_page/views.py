@@ -1,10 +1,10 @@
-from django.shortcuts import get_object_or_404, redirect, render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
 from django.views.decorators.http import require_POST
-from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponseRedirect
 from .models import Messages
 from .forms import DataForm
+import requests
+import json
 
 
 @csrf_exempt
@@ -26,17 +26,19 @@ def message_list(request):
     })
 
 
-@csrf_exempt
 def post_request(request):
     if request.method == 'POST':
         form = DataForm(request.POST)
         if form.is_valid():
-            return HttpResponseRedirect('/thanks/')
+            body = form.cleaned_data['body']
+            port = form.cleaned_data['port']
+            url = form.cleaned_data['url']
+            proxies = {'http': 'http://ivan.semenyshyn:Adidas767@sgproxy.kyivstar.ua:3128',
+                       'https': 'https://ivan.semenyshyn:Adidas767@sgproxy.kyivstar.ua:3128'}
+            headers = {'content-type': 'application/json'}
+            r = requests.post(url + ':' + port, data=body, headers=headers, proxies=proxies)
+            # return render(request, 'test_post_sending.html', {'res': r})
+            return HttpResponseRedirect('/post/')
     else:
         form = DataForm()
-    return render(request, 'display_http.html', {'form': form})
-
-
-def send_post(request):
-    data = str(request.body).split('&')[1]
-    return render(request, 'test_post_sending.html', {'res': data})
+    return render(request, 'main_page/post_fom.html', {'form': form})

@@ -31,6 +31,10 @@ ALLOWED_HOSTS = ['pacific-hollows-58854.herokuapp.com',
 # Application definition
 
 INSTALLED_APPS = [
+    'viewflow',
+    'material',
+    'material.frontend',
+    'material.admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
