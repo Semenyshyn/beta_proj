@@ -6,12 +6,10 @@
 </head>
 <body>
 
-{#<h4>'method': {{ http.method }}</h4>#}
-{#<h4>'body': {{ http.body }}</h4>#}
-{#<h4>'content_type': {{ http.content_type }}</h4>#}
-{#<h4>'content_params': {{ http.content_params }}</h4>#}
-
-
-<h1>{{ post }}</h1>
+<form action="/send_post/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit"/>
+</form>
 </body>
 </html>
